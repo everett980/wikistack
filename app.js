@@ -4,9 +4,17 @@ var chalk = require('chalk');
 var swig = require('swig');
 var path = require('path');
 
+var routes = require('./routes/wiki.js');
+
 var app = express();
 var port = 3000;
 
+// Default settings for template engine
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.set('view cache', false);
+swig.setDefaults({ cache : false});
 
 // point res.render to the proper directory
 app.set('views', __dirname + '/views');
@@ -22,9 +30,12 @@ swig.setDefaults({cache: false});
 
 app.listen(port);
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/', function(req, res) {
-	console.log(req.body);
-	res.sendFile(path.join(__dirname.toString(), '/views/index.html'));
+app.get('/', function(req, res, next) {
+	console.log(req.method + " " + req.path);
+	next();
 })
+
+app.use('/wiki', routes);

@@ -5,9 +5,11 @@
   <hr>
   <form method="POST" action="/wiki/">
     
-    <div>PLACEHOLDER FOR AUTHOR NAME FIELD</div>
+    <div>
+      Title: <input type="text" name="title2" default="John Doe">
+    </div>
     
-    <div>PLACEHOLDER FOR AUTHOR EMAIL FIELD</div>
+    <div>Email: <input type="text" name="email" default"m@m.m"></div>
     
     <div class="form-group">
       <label for="title" class="col-sm-2 control-label">Page Title</label>
@@ -16,9 +18,9 @@
       </div>
     </div>
     
-    <div>PLACEHOLDER FOR PAGE CONTENT TEXTAREA FIELD</div>
+    <div>Content: <input type="text" name="pageContents" default="Write me"></div>
     
-    <div>PLACEHOLDER FOR PAGE STATUS INPUT FIELD</div>
+    <div>Status: <input type="text" name="status" default="'open' or 'closed'"></div>
 
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">submit</button>
